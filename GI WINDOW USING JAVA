@@ -1,0 +1,21 @@
+package com.mycompany.rough1;
+import javax.swing.JFrame;
+
+/**
+ *
+ * @author Admin
+ */
+public class Rough1 {
+
+    public static void main(String[] args) {
+        Abc obj=new Abc();
+        obj.setVisible(true);
+    }
+}
+class Abc extends JFrame//creating a constructor
+{
+    public Abc(){
+        
+    }
+    
+}
