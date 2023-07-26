@@ -1,0 +1,108 @@
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+
+public class Main extends JFrame {
+    private JPanel contentPane;
+    private JTextField tFirstName;
+    private JTextField tSurname;
+    private JComboBox<String> cbGender;
+    private JTextArea tAddress;
+    private JTextField tStudentId;
+
+
+    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    Main frame = new Main();
+                    frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    public Main() {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 450, 400);
+        contentPane = new JPanel();
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
+        JLabel lsno = new JLabel("Student Id");
+        lsno.setBounds(10, 19, 80, 14);
+        contentPane.add(lsno);
+        JTextField tStudentId = new JTextField();
+        tStudentId.setBounds(100, 19, 150, 20);
+        contentPane.add(tStudentId);
+        tStudentId.setColumns(10);
+
+
+        JLabel lblFirstName = new JLabel("First Name");
+        lblFirstName.setBounds(10, 56, 80, 14);
+        contentPane.add(lblFirstName);
+
+        tFirstName = new JTextField();
+        tFirstName.setBounds(100, 56, 150, 20);
+        contentPane.add(tFirstName);
+        tFirstName.setColumns(10);
+
+        JLabel lblSurname = new JLabel("Surname");
+        lblSurname.setBounds(10, 89, 80, 14);
+        contentPane.add(lblSurname);
+
+        tSurname = new JTextField();
+        tSurname.setBounds(100, 86, 150, 20);
+        contentPane.add(tSurname);
+        tSurname.setColumns(10);
+
+        JLabel lblGender = new JLabel("Gender");
+        lblGender.setBounds(10, 119, 80, 14);
+        contentPane.add(lblGender);
+
+        String[] genderOptions = {"Male", "Female", "Other"};
+        cbGender = new JComboBox<>(genderOptions);
+        cbGender.setBounds(100, 116, 150, 20);
+        contentPane.add(cbGender);
+
+
+
+        JLabel lblAddress = new JLabel("Address");
+        lblAddress.setBounds(10, 149, 80, 14);
+        contentPane.add(lblAddress);
+
+        tAddress = new JTextArea();
+        tAddress.setBounds(100, 146, 260, 100);
+        contentPane.add(tAddress);
+
+        JButton btnSave = new JButton("Save");
+        btnSave.setBounds(100, 270, 80, 23);
+        btnSave.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String firstName = tFirstName.getText();
+             
+                String surname = tSurname.getText();
+                String gender = cbGender.getSelectedItem().toString();
+
+                String address = tAddress.getText();
+                String studentId = tStudentId.getText(); // Use the class-level tStudentId field here
+
+
+                // Create an object of the update class
+                Update obj = new Update();
+
+                obj.my_db_update(String.valueOf(tStudentId),firstName, surname, gender, address);
+                System.out.println("Record added successfully!");
+            }
+        });
+        contentPane.add(btnSave);
+    }
+
+
+    }
+
