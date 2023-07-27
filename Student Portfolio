@@ -28,12 +28,18 @@ public class Main extends JFrame {
     }
 
     public Main() {
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 400);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
+
+
+
+
+
         JLabel lsno = new JLabel("Student Id");
         lsno.setBounds(10, 19, 80, 14);
         contentPane.add(lsno);
@@ -79,6 +85,11 @@ public class Main extends JFrame {
         tAddress = new JTextArea();
         tAddress.setBounds(100, 146, 260, 100);
         contentPane.add(tAddress);
+        JLabel label= new JLabel();
+        label.setIcon(new ImageIcon("img.png")); //Sets the image to be displayed as an icon
+        label.setBounds(0,0,450,400);
+        contentPane.add(label);
+
 
         JButton btnSave = new JButton("Save");
         btnSave.setBounds(100, 270, 80, 23);
